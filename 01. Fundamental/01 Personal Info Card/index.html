@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal Info Card</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .container {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            padding: 40px;
+            max-width: 500px;
+            width: 100%;
+        }
+
+        h1 {
+            color: #333;
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 2em;
+            border-bottom: 3px solid #667eea;
+            padding-bottom: 10px;
+        }
+
+        .info-card {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .avatar {
+            width: 100px;
+            height: 100px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 50%;
+            margin: 0 auto 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-size: 3em;
+            font-weight: bold;
+            box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
+        }
+
+        .info-item {
+            margin: 15px 0;
+            padding: 10px;
+            background: rgba(255,255,255,0.9);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+
+        .info-icon {
+            font-size: 1.5em;
+            min-width: 40px;
+            text-align: center;
+        }
+
+        .info-label {
+            font-weight: bold;
+            color: #555;
+            min-width: 80px;
+        }
+
+        .info-value {
+            color: #333;
+            flex: 1;
+        }
+
+        .edit-section {
+            background: #f8f9fa;
+            border-radius: 15px;
+            padding: 20px;
+        }
+
+        h2 {
+            color: #444;
+            margin-bottom: 20px;
+            font-size: 1.3em;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .input-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: #555;
+            font-weight: 500;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 1em;
+            transition: all 0.3s;
+        }
+
+        input:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        .button-group {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        button {
+            flex: 1;
+            padding: 12px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .btn-update {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .btn-update:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
+        }
+
+        .btn-reset {
+            background: #e0e0e0;
+            color: #333;
+        }
+
+        .btn-reset:hover {
+            background: #d0d0d0;
+        }
+
+        .last-updated {
+            text-align: center;
+            margin-top: 20px;
+            color: #888;
+            font-size: 0.9em;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>📇 Personal Info Card</h1>
+        
+        <!-- Info Card Display -->
+        <div class="info-card" id="infoCard">
+            <div class="avatar" id="avatar">JD</div>
+            
+            <div class="info-item">
+                <span class="info-icon">👤</span>
+                <span class="info-label">Name:</span>
+                <span class="info-value" id="displayName">John Doe</span>
+            </div>
+            
+            <div class="info-item">
+                <span class="info-icon">🎂</span>
+                <span class="info-label">Age:</span>
+                <span class="info-value" id="displayAge">25</span>
+            </div>
+            
+            <div class="info-item">
+                <span class="info-icon">💼</span>
+                <span class="info-label">Profession:</span>
+                <span class="info-value" id="displayProfession">Web Developer</span>
+            </div>
+            
+            <div class="info-item">
+                <span class="info-icon">📍</span>
+                <span class="info-label">City:</span>
+                <span class="info-value" id="displayCity">New York</span>
+            </div>
+            
+            <div class="info-item">
+                <span class="info-icon">✉️</span>
+                <span class="info-label">Email:</span>
+                <span class="info-value" id="displayEmail">john.doe@example.com</span>
+            </div>
+        </div>
+
+        <!-- Edit Section -->
+        <div class="edit-section">
+            <h2>
+                <span>✏️</span>
+                Edit Information
+            </h2>
+            
+            <div class="input-group">
+                <label for="nameInput">Full Name:</label>
+                <input type="text" id="nameInput" placeholder="Enter your name" value="John Doe">
+            </div>
+            
+            <div class="input-group">
+                <label for="ageInput">Age:</label>
+                <input type="number" id="ageInput" placeholder="Enter your age" value="25" min="0" max="150">
+            </div>
+            
+            <div class="input-group">
+                <label for="professionInput">Profession:</label>
+                <input type="text" id="professionInput" placeholder="Enter your profession" value="Web Developer">
+            </div>
+            
+            <div class="input-group">
+                <label for="cityInput">City:</label>
+                <input type="text" id="cityInput" placeholder="Enter your city" value="New York">
+            </div>
+            
+            <div class="input-group">
+                <label for="emailInput">Email:</label>
+                <input type="email" id="emailInput" placeholder="Enter your email" value="john.doe@example.com">
+            </div>
+            
+            <div class="button-group">
+                <button class="btn-update" onclick="updateCard()">Update Card</button>
+                <button class="btn-reset" onclick="resetCard()">Reset</button>
+            </div>
+            
+            <div class="last-updated" id="lastUpdated">
+                Last updated: Just now
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // ============= JAVASCRIPT FUNDAMENTALS PRACTICE =============
+        // This project demonstrates:
+        // 1. Variables (var, let, const)
+        // 2. Data Types (strings, numbers, objects)
+        // 3. Type Conversion
+        // 4. Operators
+        // 5. Expressions & Statements
+        // 6. Comments
+        // ============================================================
+
+        // ============ CONST VARIABLES (Cannot be reassigned) ============
+        // Using const for values that should never change
+        const DEFAULT_NAME = "John Doe";                    // String data type
+        const DEFAULT_AGE = 25;                             // Number data type
+        const DEFAULT_PROFESSION = "Web Developer";         // String data type
+        const DEFAULT_CITY = "New York";                    // String data type
+        const DEFAULT_EMAIL = "john.doe@example.com";       // String data type
+        const CARD_VERSION = "1.0.0";                       // String data type
+        const MAX_AGE = 150;                                 // Number data type
+        const MIN_AGE = 0;                                   // Number data type
+
+        // ============ LET VARIABLES (Can be reassigned) ============
+        // Using let for values that will change
+        let currentName = DEFAULT_NAME;                      // String data type
+        let currentAge = DEFAULT_AGE;                        // Number data type
+        let currentProfession = DEFAULT_PROFESSION;          // String data type
+        let currentCity = DEFAULT_CITY;                      // String data type
+        let currentEmail = DEFAULT_EMAIL;                    // String data type
+        let updateCount = 0;                                 // Number data type (counter)
+        let lastUpdateTime = new Date();                      // Object data type
+
+        // ============ VAR VARIABLES (Older style, function-scoped) ============
+        // Demonstrating var for historical context (though let/const are preferred)
+        var cardTheme = "modern";                            // String data type
+        var isCardVisible = true;                            // Boolean data type
+
+        // ============ REFERENCE DATA TYPES ============
+        // Object - Collection of related data
+        const cardStyles = {
+            backgroundColor: "linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%)",
+            borderRadius: "15px",
+            padding: "30px",
+            shadow: "0 10px 30px rgba(0,0,0,0.1)"
+        };
+
+        // Array - List of professions for validation
+        const VALID_PROFESSIONS = [
+            "Web Developer", "Designer", "Teacher", "Doctor", 
+            "Engineer", "Student", "Other"
+        ];
+
+        // ============ TYPE CONVERSION & COERCION EXAMPLES ============
+        /**
+         * Converts string input to number with validation
+         * Demonstrates explicit type conversion
+         */
+        function convertToValidAge(input) {
+            // Type conversion: string to number using Number()
+            let age = Number(input);
+            
+            // Type coercion happens in comparisons (number vs number)
+            if (isNaN(age)) {  // isNaN() checks if value is Not-a-Number
+                return DEFAULT_AGE;
+            }
+            
+            // Using operators with type coercion
+            age = Math.min(MAX_AGE, Math.max(MIN_AGE, age));
+            
+            return age;
+        }
+
+        /**
+         * Formats email and demonstrates string type handling
+         */
+        function formatEmail(email) {
+            // Type coercion: converting to string if not already
+            email = String(email).toLowerCase().trim();
+            
+            // Simple validation using operators
+            if (email.length < 5 || !email.includes('@')) {
+                return DEFAULT_EMAIL;
+            }
+            
+            return email;
+        }
+
+        // ============ UPDATE CARD FUNCTION ============
+        // Demonstrates expressions, statements, and operators
+        function updateCard() {
+            // ============ GET INPUT VALUES ============
+            // Getting values from input fields (always returns strings)
+            const nameInput = document.getElementById('nameInput').value;
+            const ageInput = document.getElementById('ageInput').value;
+            const professionInput = document.getElementById('professionInput').value;
+            const cityInput = document.getElementById('cityInput').value;
+            const emailInput = document.getElementById('emailInput').value;
+
+            // ============ EXPRESSIONS & TYPE CONVERSION ============
+            // Assignment expressions with type conversion
+            const newName = nameInput || DEFAULT_NAME;                    // Logical OR expression
+            const newAge = convertToValidAge(ageInput);                   // Function call expression
+            const newProfession = professionInput || DEFAULT_PROFESSION;  // Logical OR expression
+            const newCity = cityInput || DEFAULT_CITY;                    // Logical OR expression
+            const newEmail = formatEmail(emailInput);                     // Function call expression
+
+            // ============ OPERATORS IN ACTION ============
+            // Arithmetic operator (increment)
+            updateCount++;
+            
+            // Assignment operators
+            currentName = newName;
+            currentAge = newAge;
+            currentProfession = newProfession;
+            currentCity = newCity;
+            currentEmail = newEmail;
+            
+            // Update timestamp (new Date() creates a new object)
+            lastUpdateTime = new Date();
+
+            // ============ UPDATE DISPLAY ============
+            // DOM manipulation statements
+            document.getElementById('displayName').textContent = currentName;
+            document.getElementById('displayAge').textContent = currentAge;
+            document.getElementById('displayProfession').textContent = currentProfession;
+            document.getElementById('displayCity').textContent = currentCity;
+            document.getElementById('displayEmail').textContent = currentEmail;
+            
+            // Update avatar initials (string operation)
+            const initials = currentName
+                .split(' ')                    // String method: split into array
+                .map(word => word[0])          // Array method: get first letters
+                .join('')                       // Array method: join back to string
+                .toUpperCase();                 // String method: uppercase
+            document.getElementById('avatar').textContent = initials.substring(0, 2);
+            
+            // Update last updated time
+            const timeString = lastUpdateTime.toLocaleTimeString();
+            document.getElementById('lastUpdated').textContent = 
+                `Last updated: Today at ${timeString} (Update #${updateCount})`;
+
+            // ============ CONDITIONAL STATEMENT ============
+            // Show success feedback based on update count
+            if (updateCount === 1) {
+                alert('✅ Card updated successfully!');
+            } else if (updateCount > 1) {
+                console.log(`Card updated ${updateCount} times`); // Console output
+            }
+
+            // ============ TYPE COERCION EXAMPLE ============
+            // Automatic type coercion in string concatenation
+            console.log("Update count is: " + updateCount); // Number coerced to string
+        }
+
+        // ============ RESET CARD FUNCTION ============
+        function resetCard() {
+            // Reset to default values using const variables
+            currentName = DEFAULT_NAME;
+            currentAge = DEFAULT_AGE;
+            currentProfession = DEFAULT_PROFESSION;
+            currentCity = DEFAULT_CITY;
+            currentEmail = DEFAULT_EMAIL;
+            
+            // Reset form inputs
+            document.getElementById('nameInput').value = DEFAULT_NAME;
+            document.getElementById('ageInput').value = DEFAULT_AGE;
+            document.getElementById('professionInput').value = DEFAULT_PROFESSION;
+            document.getElementById('cityInput').value = DEFAULT_CITY;
+            document.getElementById('emailInput').value = DEFAULT_EMAIL;
+            
+            // Update display
+            document.getElementById('displayName').textContent = DEFAULT_NAME;
+            document.getElementById('displayAge').textContent = DEFAULT_AGE;
+            document.getElementById('displayProfession').textContent = DEFAULT_PROFESSION;
+            document.getElementById('displayCity').textContent = DEFAULT_CITY;
+            document.getElementById('displayEmail').textContent = DEFAULT_EMAIL;
+            
+            // Reset avatar
+            document.getElementById('avatar').textContent = "JD";
+            
+            // Reset counter and timestamp
+            updateCount = 0;
+            lastUpdateTime = new Date();
+            
+            // Update last updated message
+            document.getElementById('lastUpdated').textContent = "Last updated: Reset to defaults";
+            
+            // Alert using template literal (modern string expression)
+            alert(`🔄 Card reset to default values`);
+        }
+
+        // ============ INITIALIZATION (IMMEDIATELY INVOKED FUNCTION EXPRESSION) ============
+        // IIFE to demonstrate function expressions
+        (function initializeCard() {
+            console.log("Personal Info Card v" + CARD_VERSION + " initialized");
+            console.log("Card theme:", cardTheme);
+            console.log("Card visible:", isCardVisible);
+            console.log("Card styles:", cardStyles);
+            
+            // Set initial avatar
+            document.getElementById('avatar').textContent = "JD";
+        })();
+
+        // ============ EVENT LISTENERS ============
+        // Add keyboard support (Enter key to update)
+        document.addEventListener('keypress', function(event) {
+            // Check if Enter key was pressed (using strict equality operator)
+            if (event.key === 'Enter') {
+                updateCard();
+            }
+        });
+
+        // ============ ADDITIONAL OPERATOR EXAMPLES ============
+        // These are just for demonstration and don't affect functionality
+        
+        // Arithmetic operators
+        const birthYear = new Date().getFullYear() - currentAge;
+        console.log(`Birth year calculation: ${birthYear}`); // Subtraction operator
+        
+        // Comparison operators
+        console.log(`Is age valid? ${currentAge >= MIN_AGE && currentAge <= MAX_AGE}`); // Logical AND
+        
+        // Ternary operator (conditional expression)
+        const cardStatus = isCardVisible ? "visible" : "hidden";
+        console.log(`Card is ${cardStatus}`);
+        
+        // Typeof operator
+        console.log("currentName type:", typeof currentName);
+        console.log("currentAge type:", typeof currentAge);
+        console.log("updateCount type:", typeof updateCount);
+        console.log("cardStyles type:", typeof cardStyles);
+        console.log("isCardVisible type:", typeof isCardVisible);
+    </script>
+</body>
+</html>
